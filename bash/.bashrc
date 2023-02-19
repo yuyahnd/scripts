@@ -1,4 +1,14 @@
 #!/bin/env bash
+SCRIPT_DIR=$(cd $(dirname $BASH_SOURCE); pwd)
+
+if [ -f $SCRIPT_DIR/git-completion.bash ]; then
+    source $SCRIPT_DIR/git-completion.bash
+fi
+
+if [ -f $SCRIPT_DIR/git-prompt.sh ]; then
+    source $SCRIPT_DIR/git-prompt.sh
+fi
+
 
 alias ll='ls -al'
 alias ls='ls -F --color=auto --show-control-chars'
