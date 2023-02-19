@@ -13,6 +13,10 @@ alias ll='ls -al'
 alias ls='ls -F --color=auto --show-control-chars'
 alias grep='grep --color=auto'
 
+if type sed > /dev/null 2>&1; then
+    alias paths='echo $PATH | sed "s/:/\n/g"'
+fi
+
 alias_windows() {
     alias python='py'
     alias python3='py'
