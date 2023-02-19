@@ -1,3 +1,11 @@
+#!/usr/bin/env zsh
+SCRIPT_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
+
+# git prompt
+if [ -f $SCRIPT_DIR/git-prompt.sh ]; then
+    source $SCRIPT_DIR/git-prompt.sh
+fi
+
 # enable completion
 autoload -U compinit
 compinit
