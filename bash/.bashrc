@@ -31,22 +31,45 @@ if type sed > /dev/null 2>&1; then
     alias paths='echo $PATH | sed "s/:/\n/g"'
 fi
 
-alias_windows() {
-    alias python='py'
-    alias python3='py'
-    alias pip='py -m pip'
-    alias pip3='py -m pip'
-    alias venva='source .venv/Scripts/activate'
-    alias venvd='deactivate'
+alias_python() {
+    if type python3 > /dev/null 2>&1; then
+        alias python='python3'
+        alias pip='python3 -m pip'
+        alias pip3='python3 -m pip'
+        alias venva='source .venv/bin/activate'
+        alias venvd='deactivate'
+    fi
 }
 
+alias_python_windows() {
+    if type py > /dev/null 2>&1; then
+        alias python='py'
+        alias python3='py'
+        alias pip='py -m pip'
+        alias pip3='py -m pip'
+        alias venva='source .venv/Scripts/activate'
+        alias venvd='deactivate'
+    fi
+}
+
+alias_mac() {
+    alias_python
+}
+
+alias_linux() {
+    alias_python
+}
+
+alias_windows() {
+    alias_python_windows
+}
 
 if [ "$(uname)" == "Darwin" ]; then
-    echo "Mac"
+    alias_mac
 elif [ "$(expr substr $(uname -s) 1 5)" == "MINGW" ]; then
     alias_windows
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    echo "Linux"
+    alias_linux
 else
     echo "Unknown OS"
 fi
