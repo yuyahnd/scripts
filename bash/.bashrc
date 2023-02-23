@@ -1,12 +1,12 @@
 #!/bin/env bash
-SCRIPT_DIR=$(cd $(dirname $BASH_SOURCE); pwd)
+SCRIPT_DIR="$(cd $(dirname $BASH_SOURCE); pwd)"
 
-if [ -f $SCRIPT_DIR/git-completion.bash ]; then
-    source $SCRIPT_DIR/git-completion.bash
+if [ -f "$SCRIPT_DIR/git-completion.bash" ]; then
+    source "$SCRIPT_DIR/git-completion.bash"
 fi
 
-if [ -f $SCRIPT_DIR/git-prompt.sh ]; then
-    source $SCRIPT_DIR/git-prompt.sh
+if [ -f "$SCRIPT_DIR/git-prompt.sh" ]; then
+    source "$SCRIPT_DIR/git-prompt.sh"
 fi
 
 PS1='\[\033]0;$TITLEPREFIX:$PWD\007\]' # set window title
@@ -23,9 +23,9 @@ PS1="$PS1"' $VIRTUAL_ENV_PROMPT'       # venv prompt
 PS1="$PS1"'\n'                         # new line
 PS1="$PS1"'$ '                         # prompt: always $
 
-alias ll='ls -al'
-alias ls='ls -F --color=auto --show-control-chars'
-alias grep='grep --color=auto'
+alias ll="ls -al"
+alias ls="ls -F --color=auto --show-control-chars"
+alias grep="grep --color=auto"
 
 if type sed > /dev/null 2>&1; then
     alias paths='echo $PATH | sed "s/:/\n/g"'
@@ -33,22 +33,22 @@ fi
 
 alias_python() {
     if type python3 > /dev/null 2>&1; then
-        alias python='python3'
-        alias pip='python3 -m pip'
-        alias pip3='python3 -m pip'
-        alias venva='source .venv/bin/activate'
-        alias venvd='deactivate'
+        alias python="python3"
+        alias pip="python3 -m pip"
+        alias pip3="python3 -m pip"
+        alias venva="source .venv/bin/activate"
+        alias venvd="deactivate"
     fi
 }
 
 alias_python_windows() {
     if type py > /dev/null 2>&1; then
-        alias python='py'
-        alias python3='py'
-        alias pip='py -m pip'
-        alias pip3='py -m pip'
-        alias venva='source .venv/Scripts/activate'
-        alias venvd='deactivate'
+        alias python="py"
+        alias python3="py"
+        alias pip="py -m pip"
+        alias pip3="py -m pip"
+        alias venva="source .venv/Scripts/activate"
+        alias venvd="deactivate"
     fi
 }
 
