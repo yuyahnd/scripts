@@ -35,5 +35,16 @@ alias l='ls -CF'
 # ssh-agent
 alias saa='ssh-add --apple-load-keychain'
 
-# docker
-alias dc='docker-compose'
+# docker-compose
+if type dockcer-compose > /dev/null 2>&1; then
+    alias dc='docker-compose'
+fi
+
+ # python
+ if type python3 > /dev/null 2>&1; then
+    alias python='python3'
+    alias pip='python3 -m pip'
+    alias pip3='python3 -m pip'
+    alias venva='source .venv/bin/activate'
+    alias venvd='deactivate'
+ fi
